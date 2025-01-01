@@ -1,0 +1,16 @@
+services:
+  app:
+    image: node:18-alpine
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 127.0.0.1:3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: <your-rds-endpoint>
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: securepassword
+      MYSQL_DB: tododb
+volumes:
+  todo-mysql-data: {}
